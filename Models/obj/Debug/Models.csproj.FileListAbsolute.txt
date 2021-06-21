@@ -1,0 +1,12 @@
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\obj\Debug\Models.csprojAssemblyReference.cache
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\Models.dll.config
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\Models.dll
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\Models.pdb
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\EntityFramework.dll
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\EntityFramework.xml
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\obj\Debug\Models.csproj.CopyComplete
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\obj\Debug\Models.dll
+D:\HIEU_GIDDY\Hoc_Tap\C#\BaiTap\ThayQuang\BanDongHo\Models\obj\Debug\Models.pdb

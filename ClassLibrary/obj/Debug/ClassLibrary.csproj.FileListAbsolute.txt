@@ -1,0 +1,10 @@
+D:\BanDongHo\ClassLibrary\bin\Debug\ClassLibrary.dll.config
+D:\BanDongHo\ClassLibrary\bin\Debug\ClassLibrary.dll
+D:\BanDongHo\ClassLibrary\bin\Debug\ClassLibrary.pdb
+D:\BanDongHo\ClassLibrary\bin\Debug\EntityFramework.dll
+D:\BanDongHo\ClassLibrary\bin\Debug\EntityFramework.xml
+D:\BanDongHo\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache
+D:\BanDongHo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+D:\BanDongHo\ClassLibrary\obj\Debug\ClassLibrary.csproj.CopyComplete
+D:\BanDongHo\ClassLibrary\obj\Debug\ClassLibrary.dll
+D:\BanDongHo\ClassLibrary\obj\Debug\ClassLibrary.pdb

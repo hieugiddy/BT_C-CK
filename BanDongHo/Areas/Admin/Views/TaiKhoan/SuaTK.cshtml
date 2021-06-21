@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ClassLibrary.UserAccount tk = ViewBag.CTTaiKhoan;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <form method="post">
+                            <input type="hidden" name="ID" value="@tk.ID" />
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control form-control-border" id="username"
+                                       value="@tk.UserName" placeholder="Username" name="UserName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control form-control-border" id="password"
+                                       value="@tk.Password" placeholder="Password" name="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Status">Trạng thái</label>
+                                <select class="custom-select form-control-border border-width-2" name="Status" id="Status">
+                                    <option value="ACTIVED">ACTIVED</option>
+                                    <option value="INACTIVED">INACTIVED</option>
+                                    <option value="BLOCKED">BLOCKED</option>
+                                </select>
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-success" id="btnThemSP"
+                                        name="btnThemSP">
+                                    Lưu
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Select2 -->
+<script src="~/public/Admin/plugins/select2/js/select2.full.min.js"></script>
+<!-- BS Stepper -->
+<link rel="stylesheet" href="~/public/Admin/plugins/bs-stepper/css/bs-stepper.min.css">
+<!-- BS-Stepper -->
+<script src="~/public/Admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- daterange picker -->
+<script src="~/public/Admin/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="~/public/Admin/plugins/moment/moment.min.js"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/public/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script>
+    $("#Status").val("@tk.Status");
+    document.addEventListener('DOMContentLoaded', function () {
+        window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+    });
+</script>

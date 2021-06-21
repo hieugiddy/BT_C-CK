@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Kết quả tìm kiếm sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    IEnumerable<ClassLibrary.Product> dsSanPham = ViewBag.SanPham;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <br>
+                        <a href="/Admin/SanPham/ThemSP" class="btn btn-block btn-danger d-inline">Thêm sản phẩm</a>
+                        <div class="card-tools py-2">
+                            <form action="/Admin/SanPham/TimKiemSP">
+                                <div class="input-group input-group-sm" style="width: 200px;">
+                                    <input type="text" name="q" class="form-control float-right"
+                                           placeholder="Tìm kiếm sản phẩm">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Đơn vị tính</th>
+                                    <th>Giá bán</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in dsSanPham)
+                                {
+                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                        <td style="vertical-align: middle">@item.ProductID</td>
+                                        <td style="vertical-align: middle">
+                                            <img src="@item.Image" width="150px" />
+                                        </td>
+                                        <td style="vertical-align: middle;">@item.Name</td>
+                                        <td style="vertical-align: middle;">@item.UnitCost</td>
+                                        <td style="vertical-align: middle;">@item.Quantity</td>
+                                        <td style="vertical-align: middle;">@item.Status</td>
+                                    </tr>
+                                    <tr class="expandable-body">
+                                        <td colspan="6">
+                                            <div class="row p-3">
+                                                <div class="col-3">
+                                                    <ul>
+                                                        <li><strong>Mã Sản phẩm:</strong>  @item.ProductID</li>
+                                                        <li><strong>Tên sản phẩm:</strong>  @item.Name</li>
+                                                        <li><strong>Đơn vị tính:</strong>  @item.UnitCost</li>
+                                                        <li><strong>Giá bán:</strong>  @item.Quantity</li>
+                                                        <li><strong>Trạng thái:</strong>  @item.Status</li>
+                                                        <li><strong>Danh mục:</strong>  @item.Category.Name</li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-justify">@item.Description</p>
+                                                </div>
+                                                <div class="col-3 text-center">
+                                                    <a class="btn btn-app d-inline-block" href="/Admin/SanPham/SuaSP?idsp=@item.ProductID">
+                                                        <i class="fas fa-edit"></i> Sửa
+                                                    </a>
+                                                    <a class="btn btn-app" href="/Admin/SanPham/XoaSP?idsp=@item.ProductID">
+                                                        <i class="fas fa-trash"></i> Xóa
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <!-- Thêm mã phân trang -->
+
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

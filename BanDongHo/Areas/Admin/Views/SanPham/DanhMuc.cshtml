@@ -1,0 +1,112 @@
+﻿@model ClassLibrary.Category
+@{
+    ViewBag.Title = "Danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    IEnumerable<ClassLibrary.Category> dsDanhMuc = ViewBag.AllDanhMuc;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        @using (Html.BeginForm())
+                        {
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-border", @placeholder = "Tên danh mục" })
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control form-control-border", @placeholder = "Mô tả" })
+                                </div>
+                            </div>
+                            <div class="my-auto ml-4">
+                                <button type="submit" class="btn btn-block btn-danger">Thêm danh mục</button>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên danh mục</th>
+                                    <th>Mô tả</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                @{
+                                    var ten1 = "TenDM";
+                                    var ten2 = "MTDM";
+                                    var value1 = "TDM";
+                                    var value2 = "MT";
+                                }
+                                @foreach (var item in dsDanhMuc)
+                                {
+                                <tr data-widget="expandable-table" aria-expanded="false">
+                                    <td style="vertical-align: middle">@item.CategoryID</td>
+                                    <td style="vertical-align: middle" id="@value1@item.CategoryID">@item.Name</td>
+                                    <td style="vertical-align: middle" id="@value2@item.CategoryID">@item.Description</td>
+                                </tr>
+                                    <tr class="expandable-body">
+                                        <td colspan="2">
+                                            <div class="row p-3">
+                                                <div class="col-3 ml-5">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control form-control-border"
+                                                               value="@item.Name"
+                                                               id="@ten1@item.CategoryID"
+                                                               placeholder="Tên danh mục">
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 ml-5">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control form-control-border"
+                                                               value="@item.Description"
+                                                               id="@ten2@item.CategoryID"
+                                                               placeholder="Mô tả">
+                                                    </div>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <a class="btn btn-block btn-primary" onclick="btnLuu(@item.CategoryID)">Lưu</a>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <a href="/Admin/SanPham/XoaDanhMuc?id=@item.CategoryID" class="btn btn-block btn-danger">Xóa</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<script>
+    function btnLuu (id) {
+        var tenDm = document.getElementById("@ten1" + id).value;
+        var moTaDm = document.getElementById("@ten2" + id).value;
+        $.post('/Admin/SanPham/SuaDanhMuc', {
+            CategoryID: id,
+            Name: tenDm,
+            Description: moTaDm
+        }, function (ketqua) {
+            $('#@value1' + id).html(ketqua.ten);
+            $('#@value2'+id).html(ketqua.moTa);
+        });
+    }
+</script>

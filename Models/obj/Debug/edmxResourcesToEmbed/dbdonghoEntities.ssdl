@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbdonghoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietDanhMuc">
+    <Key>
+      <PropertyRef Name="ID_DanhMuc" />
+      <PropertyRef Name="ID_SanPham" />
+    </Key>
+    <Property Name="ID_DanhMuc" Type="int" Nullable="false" />
+    <Property Name="ID_SanPham" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dbdongho.dbo.ChiTietDonHang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ChiTietDonHang">
+          <Property Name="ID_DonHang" Type="int" />
+          <Property Name="ID_SanPham" Type="int" />
+          <Property Name="ID_MauSac" Type="int" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="ThanhTien" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>-->
+  <EntityType Name="ChiTietMauSac">
+    <Key>
+      <PropertyRef Name="ID_SanPham" />
+      <PropertyRef Name="ID_MauSac" />
+    </Key>
+    <Property Name="ID_SanPham" Type="int" Nullable="false" />
+    <Property Name="ID_MauSac" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="DanhGia">
+    <Key>
+      <PropertyRef Name="ID_DanhGia" />
+    </Key>
+    <Property Name="ID_DanhGia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoiDung" Type="nvarchar" MaxLength="255" />
+    <Property Name="Diem" Type="int" />
+    <Property Name="ThoiGian" Type="datetime" />
+    <Property Name="ID_TaiKhoan" Type="int" />
+    <Property Name="ID_SanPham" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="ID_DanhMuc" />
+    </Key>
+    <Property Name="ID_DanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="ID_DonHang" />
+    </Key>
+    <Property Name="ID_DonHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="SoDT" Type="varchar" MaxLength="11" />
+    <Property Name="DiaChiGiaoHang" Type="nvarchar" MaxLength="200" />
+    <Property Name="DonViVanChuyen" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgayGHDuKien" Type="date" />
+    <Property Name="NgayDatHang" Type="date" Nullable="false" />
+    <Property Name="MaVanDon" Type="varchar" MaxLength="50" />
+    <Property Name="TrangThai" Type="int" />
+    <Property Name="ID_TaiKhoan" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dbdongho.dbo.GioHang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="GioHang">
+          <Property Name="ID_TaiKhoan" Type="int" />
+          <Property Name="ID_SanPham" Type="int" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="ID_MauSac" Type="int" />
+        </EntityType>-->
+  <EntityType Name="HinhAnh">
+    <Key>
+      <PropertyRef Name="ID_HinhAnh" />
+    </Key>
+    <Property Name="ID_HinhAnh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HinhAnhUrl" Type="text" />
+    <Property Name="ID_SanPham" Type="int" />
+  </EntityType>
+  <EntityType Name="LichSuDonHang">
+    <Key>
+      <PropertyRef Name="ID_LichSu" />
+    </Key>
+    <Property Name="ID_LichSu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+    <Property Name="ThoiGian" Type="datetime" />
+    <Property Name="ID_DonHang" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MauSac">
+    <Key>
+      <PropertyRef Name="ID_MauSac" />
+    </Key>
+    <Property Name="ID_MauSac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenMauSac" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="QuyenHan">
+    <Key>
+      <PropertyRef Name="ID_Quyen" />
+    </Key>
+    <Property Name="ID_Quyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenQuyen" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="ID_SanPham" />
+    </Key>
+    <Property Name="ID_SanPham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenSanPham" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MatKinh" Type="nvarchar" MaxLength="100" />
+    <Property Name="DayDongHo" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiSX" Type="nvarchar" MaxLength="100" />
+    <Property Name="GiaBan" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GioiThieuNgan" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaoHanh" Type="nvarchar" MaxLength="255" />
+    <Property Name="SKU" Type="varchar" MaxLength="200" />
+    <Property Name="NgayCapNhat" Type="datetime" />
+    <Property Name="ID_ThuongHieu" Type="int" />
+    <Property Name="TrangThai" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID_TaiKhoan" />
+    </Key>
+    <Property Name="ID_TaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="150" />
+    <Property Name="Email" Type="varchar" MaxLength="120" />
+    <Property Name="SoDT" Type="varchar" MaxLength="11" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="ThoiGian" Type="datetime" />
+    <Property Name="ID_Quyen" Type="int" />
+  </EntityType>
+  <EntityType Name="ThuongHieu">
+    <Key>
+      <PropertyRef Name="ID_ThuongHieu" />
+    </Key>
+    <Property Name="ID_ThuongHieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenThuongHieu" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__ChiTietDa__ID_Da__2BFE89A6">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+    <End Role="ChiTietDanhMuc" Type="Self.ChiTietDanhMuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="ID_DanhMuc" />
+      </Principal>
+      <Dependent Role="ChiTietDanhMuc">
+        <PropertyRef Name="ID_DanhMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietDa__ID_Sa__2CF2ADDF">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietDanhMuc" Type="Self.ChiTietDanhMuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="ChiTietDanhMuc">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.ChiTietDonHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ChiTietDo__ID_Do__41EDCAC5" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.ChiTietDonHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ChiTietDo__ID_Ma__43D61337" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.ChiTietDonHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ChiTietDo__ID_Sa__42E1EEFE" />-->
+  <Association Name="FK__ChiTietMa__ID_Ma__2739D489">
+    <End Role="MauSac" Type="Self.MauSac" Multiplicity="1" />
+    <End Role="ChiTietMauSac" Type="Self.ChiTietMauSac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauSac">
+        <PropertyRef Name="ID_MauSac" />
+      </Principal>
+      <Dependent Role="ChiTietMauSac">
+        <PropertyRef Name="ID_MauSac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietMa__ID_Sa__2645B050">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietMauSac" Type="Self.ChiTietMauSac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="ChiTietMauSac">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGia__ID_SanP__3B40CD36">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGia__ID_TaiK__3A4CA8FD">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__ID_TaiK__40058253">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.GioHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__GioHang__ID_MauS__4B7734FF" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.GioHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__GioHang__ID_SanP__4A8310C6" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dbdongho.dbo.GioHang' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__GioHang__ID_TaiK__498EEC8D" />-->
+  <Association Name="FK__HinhAnh__ID_SanP__2FCF1A8A">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+    <End Role="HinhAnh" Type="Self.HinhAnh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="HinhAnh">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuDon__ID_Do__47A6A41B">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="LichSuDonHang" Type="Self.LichSuDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="ID_DonHang" />
+      </Principal>
+      <Dependent Role="LichSuDonHang">
+        <PropertyRef Name="ID_DonHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPham__ID_Thuo__2180FB33">
+    <End Role="ThuongHieu" Type="Self.ThuongHieu" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuongHieu">
+        <PropertyRef Name="ID_ThuongHieu" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="ID_ThuongHieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__ID_Quy__367C1819">
+    <End Role="QuyenHan" Type="Self.QuyenHan" Multiplicity="0..1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuyenHan">
+        <PropertyRef Name="ID_Quyen" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="ID_Quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="proc_SuaDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_DanhMuc" Type="int" Mode="In" />
+    <Parameter Name="TenDanhMuc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_SuaMauSac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_MauSac" Type="int" Mode="In" />
+    <Parameter Name="TenMauSac" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_SuaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_SanPham" Type="int" Mode="In" />
+    <Parameter Name="TenSanPham" Type="nvarchar" Mode="In" />
+    <Parameter Name="MatKinh" Type="nvarchar" Mode="In" />
+    <Parameter Name="DayDongHo" Type="nvarchar" Mode="In" />
+    <Parameter Name="NoiSX" Type="nvarchar" Mode="In" />
+    <Parameter Name="GiaBan" Type="decimal" Mode="In" />
+    <Parameter Name="GioiThieuNgan" Type="nvarchar" Mode="In" />
+    <Parameter Name="BaoHanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="SKU" Type="varchar" Mode="In" />
+    <Parameter Name="ID_ThuongHieu" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_SuaThuongHieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ThuongHieu" Type="int" Mode="In" />
+    <Parameter Name="TenThuongHieu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_ThemChiTietDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_SanPham" Type="int" Mode="In" />
+    <Parameter Name="ID_DanhMuc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_ThemDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenDanhMuc" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_ThemMauSac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MauSac" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenSanPham" Type="nvarchar" Mode="In" />
+    <Parameter Name="MatKinh" Type="nvarchar" Mode="In" />
+    <Parameter Name="DayDongHo" Type="nvarchar" Mode="In" />
+    <Parameter Name="NoiSX" Type="nvarchar" Mode="In" />
+    <Parameter Name="GiaBan" Type="decimal" Mode="In" />
+    <Parameter Name="GioiThieuNgan" Type="nvarchar" Mode="In" />
+    <Parameter Name="BaoHanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="SKU" Type="varchar" Mode="In" />
+    <Parameter Name="ID_ThuongHieu" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_ThemThuongHieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenThuongHieu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_XemDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_XemMauSac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_XemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_XemThuongHieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_XoaDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_DanhMuc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_XoaMauSac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_MauSac" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_XoaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_SanPham" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_XoaThuongHieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ThuongHieu" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="dbdonghoModelStoreContainer">
+    <EntitySet Name="ChiTietDanhMuc" EntityType="Self.ChiTietDanhMuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietMauSac" EntityType="Self.ChiTietMauSac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhGia" EntityType="Self.DanhGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HinhAnh" EntityType="Self.HinhAnh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LichSuDonHang" EntityType="Self.LichSuDonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MauSac" EntityType="Self.MauSac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuyenHan" EntityType="Self.QuyenHan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietDa__ID_Da__2BFE89A6" Association="Self.FK__ChiTietDa__ID_Da__2BFE89A6">
+      <End Role="DanhMuc" EntitySet="DanhMuc" />
+      <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDa__ID_Sa__2CF2ADDF" Association="Self.FK__ChiTietDa__ID_Sa__2CF2ADDF">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietMa__ID_Ma__2739D489" Association="Self.FK__ChiTietMa__ID_Ma__2739D489">
+      <End Role="MauSac" EntitySet="MauSac" />
+      <End Role="ChiTietMauSac" EntitySet="ChiTietMauSac" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietMa__ID_Sa__2645B050" Association="Self.FK__ChiTietMa__ID_Sa__2645B050">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietMauSac" EntitySet="ChiTietMauSac" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGia__ID_SanP__3B40CD36" Association="Self.FK__DanhGia__ID_SanP__3B40CD36">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGia__ID_TaiK__3A4CA8FD" Association="Self.FK__DanhGia__ID_TaiK__3A4CA8FD">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__ID_TaiK__40058253" Association="Self.FK__DonHang__ID_TaiK__40058253">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HinhAnh__ID_SanP__2FCF1A8A" Association="Self.FK__HinhAnh__ID_SanP__2FCF1A8A">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="HinhAnh" EntitySet="HinhAnh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuDon__ID_Do__47A6A41B" Association="Self.FK__LichSuDon__ID_Do__47A6A41B">
+      <End Role="DonHang" EntitySet="DonHang" />
+      <End Role="LichSuDonHang" EntitySet="LichSuDonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPham__ID_Thuo__2180FB33" Association="Self.FK__SanPham__ID_Thuo__2180FB33">
+      <End Role="ThuongHieu" EntitySet="ThuongHieu" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__ID_Quy__367C1819" Association="Self.FK__TaiKhoan__ID_Quy__367C1819">
+      <End Role="QuyenHan" EntitySet="QuyenHan" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

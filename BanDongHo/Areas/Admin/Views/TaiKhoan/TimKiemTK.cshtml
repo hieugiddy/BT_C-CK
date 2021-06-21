@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    IEnumerable<ClassLibrary.UserAccount> taiKhoans = ViewBag.TaiKhoan;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-tools pt-2 mt-2 mr-3 ml-auto">
+                <form action="/Admin/TaiKhoan/TimKiemTK">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="q" class="form-control float-right"
+                               placeholder="Tìm kiếm tài khoản">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <form action="/Admin/TaiKhoan/ThemTaiKhoan" method="post">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control form-control-border" id="username"
+                                       placeholder="Username" name="UserName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control form-control-border" id="password"
+                                       placeholder="Password" name="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Status">Trạng thái</label>
+                                <select class="custom-select form-control-border border-width-2" name="Status" id="Status">
+                                    <option value="ACTIVED">ACTIVED</option>
+                                    <option value="INACTIVED">INACTIVED</option>
+                                    <option value="BLOCKED">BLOCKED</option>
+                                </select>
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-success" id="btnThemSP"
+                                        name="btnThemSP">
+                                    Thêm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body table-responsive p-0 col-7">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in taiKhoans)
+                                {
+                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                        <td style="vertical-align: middle">@item.ID</td>
+                                        <td style="vertical-align: middle">@item.UserName</td>
+                                        <td style="vertical-align: middle">@item.Status</td>
+                                        <td>
+                                            <a href="/Admin/TaiKhoan/SuaTK?idtk=@item.ID"
+                                               class="btn btn-light">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="/Admin/TaiKhoan/XoaTK?idtk=@item.ID"
+                                               class="btn btn-light">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Select2 -->
+<script src="~/public/Admin/plugins/select2/js/select2.full.min.js"></script>
+<!-- BS Stepper -->
+<link rel="stylesheet" href="~/public/Admin/plugins/bs-stepper/css/bs-stepper.min.css">
+<!-- BS-Stepper -->
+<script src="~/public/Admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- daterange picker -->
+<script src="~/public/Admin/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="~/public/Admin/plugins/moment/moment.min.js"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/public/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+    });
+</script>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+
+

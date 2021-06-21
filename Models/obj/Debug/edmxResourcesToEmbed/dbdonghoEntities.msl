@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbdonghoModelStoreContainer" CdmEntityContainer="dbdonghoEntities">
+    <EntitySetMapping Name="ChiTietMauSac">
+      <EntityTypeMapping TypeName="dbdonghoModel.ChiTietMauSac">
+        <MappingFragment StoreEntitySet="ChiTietMauSac">
+          <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+          <ScalarProperty Name="ID_MauSac" ColumnName="ID_MauSac" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGia">
+      <EntityTypeMapping TypeName="dbdonghoModel.DanhGia">
+        <MappingFragment StoreEntitySet="DanhGia">
+          <ScalarProperty Name="ID_DanhGia" ColumnName="ID_DanhGia" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="ID_TaiKhoan" ColumnName="ID_TaiKhoan" />
+          <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhMuc">
+      <EntityTypeMapping TypeName="dbdonghoModel.DanhMuc">
+        <MappingFragment StoreEntitySet="DanhMuc">
+          <ScalarProperty Name="ID_DanhMuc" ColumnName="ID_DanhMuc" />
+          <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonHang">
+      <EntityTypeMapping TypeName="dbdonghoModel.DonHang">
+        <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="ID_DonHang" ColumnName="ID_DonHang" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="DiaChiGiaoHang" ColumnName="DiaChiGiaoHang" />
+          <ScalarProperty Name="DonViVanChuyen" ColumnName="DonViVanChuyen" />
+          <ScalarProperty Name="NgayGHDuKien" ColumnName="NgayGHDuKien" />
+          <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+          <ScalarProperty Name="MaVanDon" ColumnName="MaVanDon" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ID_TaiKhoan" ColumnName="ID_TaiKhoan" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HinhAnh">
+      <EntityTypeMapping TypeName="dbdonghoModel.HinhAnh">
+        <MappingFragment StoreEntitySet="HinhAnh">
+          <ScalarProperty Name="ID_HinhAnh" ColumnName="ID_HinhAnh" />
+          <ScalarProperty Name="HinhAnhUrl" ColumnName="HinhAnhUrl" />
+          <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LichSuDonHang">
+      <EntityTypeMapping TypeName="dbdonghoModel.LichSuDonHang">
+        <MappingFragment StoreEntitySet="LichSuDonHang">
+          <ScalarProperty Name="ID_LichSu" ColumnName="ID_LichSu" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="ID_DonHang" ColumnName="ID_DonHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MauSac">
+      <EntityTypeMapping TypeName="dbdonghoModel.MauSac">
+        <MappingFragment StoreEntitySet="MauSac">
+          <ScalarProperty Name="ID_MauSac" ColumnName="ID_MauSac" />
+          <ScalarProperty Name="TenMauSac" ColumnName="TenMauSac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuyenHan">
+      <EntityTypeMapping TypeName="dbdonghoModel.QuyenHan">
+        <MappingFragment StoreEntitySet="QuyenHan">
+          <ScalarProperty Name="ID_Quyen" ColumnName="ID_Quyen" />
+          <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPham">
+      <EntityTypeMapping TypeName="dbdonghoModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+          <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+          <ScalarProperty Name="MatKinh" ColumnName="MatKinh" />
+          <ScalarProperty Name="DayDongHo" ColumnName="DayDongHo" />
+          <ScalarProperty Name="NoiSX" ColumnName="NoiSX" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="GioiThieuNgan" ColumnName="GioiThieuNgan" />
+          <ScalarProperty Name="BaoHanh" ColumnName="BaoHanh" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="ID_ThuongHieu" ColumnName="ID_ThuongHieu" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dbdonghoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoan">
+      <EntityTypeMapping TypeName="dbdonghoModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="ID_TaiKhoan" ColumnName="ID_TaiKhoan" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="ID_Quyen" ColumnName="ID_Quyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThuongHieu">
+      <EntityTypeMapping TypeName="dbdonghoModel.ThuongHieu">
+        <MappingFragment StoreEntitySet="ThuongHieu">
+          <ScalarProperty Name="ID_ThuongHieu" ColumnName="ID_ThuongHieu" />
+          <ScalarProperty Name="TenThuongHieu" ColumnName="TenThuongHieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ChiTietDanhMuc" TypeName="dbdonghoModel.ChiTietDanhMuc" StoreEntitySet="ChiTietDanhMuc">
+      <EndProperty Name="DanhMuc">
+        <ScalarProperty Name="ID_DanhMuc" ColumnName="ID_DanhMuc" />
+      </EndProperty>
+      <EndProperty Name="SanPham">
+        <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="proc_SuaDanhMuc" FunctionName="dbdonghoModel.Store.proc_SuaDanhMuc" />
+    <FunctionImportMapping FunctionImportName="proc_SuaMauSac" FunctionName="dbdonghoModel.Store.proc_SuaMauSac" />
+    <FunctionImportMapping FunctionImportName="proc_SuaSanPham" FunctionName="dbdonghoModel.Store.proc_SuaSanPham" />
+    <FunctionImportMapping FunctionImportName="proc_SuaThuongHieu" FunctionName="dbdonghoModel.Store.proc_SuaThuongHieu" />
+    <FunctionImportMapping FunctionImportName="proc_ThemDanhMuc" FunctionName="dbdonghoModel.Store.proc_ThemDanhMuc" />
+    <FunctionImportMapping FunctionImportName="proc_ThemMauSac" FunctionName="dbdonghoModel.Store.proc_ThemMauSac" />
+    <FunctionImportMapping FunctionImportName="proc_ThemSanPham" FunctionName="dbdonghoModel.Store.proc_ThemSanPham" />
+    <FunctionImportMapping FunctionImportName="proc_ThemThuongHieu" FunctionName="dbdonghoModel.Store.proc_ThemThuongHieu" />
+    <FunctionImportMapping FunctionImportName="proc_XemDanhMuc" FunctionName="dbdonghoModel.Store.proc_XemDanhMuc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.proc_XemDanhMuc_Result">
+          <ScalarProperty Name="ID_DanhMuc" ColumnName="ID_DanhMuc" />
+          <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_XemMauSac" FunctionName="dbdonghoModel.Store.proc_XemMauSac">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.proc_XemMauSac_Result">
+          <ScalarProperty Name="ID_MauSac" ColumnName="ID_MauSac" />
+          <ScalarProperty Name="TenMauSac" ColumnName="TenMauSac" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_XemSanPham" FunctionName="dbdonghoModel.Store.proc_XemSanPham">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.proc_XemSanPham_Result">
+          <ScalarProperty Name="ID_SanPham" ColumnName="ID_SanPham" />
+          <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+          <ScalarProperty Name="MatKinh" ColumnName="MatKinh" />
+          <ScalarProperty Name="DayDongHo" ColumnName="DayDongHo" />
+          <ScalarProperty Name="NoiSX" ColumnName="NoiSX" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="GioiThieuNgan" ColumnName="GioiThieuNgan" />
+          <ScalarProperty Name="BaoHanh" ColumnName="BaoHanh" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="ID_ThuongHieu" ColumnName="ID_ThuongHieu" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_XemThuongHieu" FunctionName="dbdonghoModel.Store.proc_XemThuongHieu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.proc_XemThuongHieu_Result">
+          <ScalarProperty Name="ID_ThuongHieu" ColumnName="ID_ThuongHieu" />
+          <ScalarProperty Name="TenThuongHieu" ColumnName="TenThuongHieu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_XoaDanhMuc" FunctionName="dbdonghoModel.Store.proc_XoaDanhMuc" />
+    <FunctionImportMapping FunctionImportName="proc_XoaMauSac" FunctionName="dbdonghoModel.Store.proc_XoaMauSac" />
+    <FunctionImportMapping FunctionImportName="proc_XoaSanPham" FunctionName="dbdonghoModel.Store.proc_XoaSanPham" />
+    <FunctionImportMapping FunctionImportName="proc_XoaThuongHieu" FunctionName="dbdonghoModel.Store.proc_XoaThuongHieu" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbdonghoModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbdonghoModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbdonghoModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbdonghoModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbdonghoModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbdonghoModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbdonghoModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbdonghoModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="proc_ThemChiTietDanhMuc" FunctionName="dbdonghoModel.Store.proc_ThemChiTietDanhMuc" />
+  </EntityContainerMapping>
+</Mapping>

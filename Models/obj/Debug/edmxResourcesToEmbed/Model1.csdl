@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbdonghoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTietMauSac">
+    <Key>
+      <PropertyRef Name="ID_SanPham" />
+      <PropertyRef Name="ID_MauSac" />
+    </Key>
+    <Property Name="ID_SanPham" Type="Int32" Nullable="false" />
+    <Property Name="ID_MauSac" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="MauSac" Relationship="Self.FK__ChiTietMa__ID_Ma__2739D489" FromRole="ChiTietMauSac" ToRole="MauSac" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietMa__ID_Sa__2645B050" FromRole="ChiTietMauSac" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DanhGia">
+    <Key>
+      <PropertyRef Name="ID_DanhGia" />
+    </Key>
+    <Property Name="ID_DanhGia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Diem" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="ID_TaiKhoan" Type="Int32" />
+    <Property Name="ID_SanPham" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__DanhGia__ID_SanP__3B40CD36" FromRole="DanhGia" ToRole="SanPham" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__DanhGia__ID_TaiK__3A4CA8FD" FromRole="DanhGia" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="ID_DanhMuc" />
+    </Key>
+    <Property Name="ID_DanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDanhMuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="Self.ChiTietDanhMuc" FromRole="DanhMuc" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="ID_DonHang" />
+    </Key>
+    <Property Name="ID_DonHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SoDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChiGiaoHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DonViVanChuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayGHDuKien" Type="DateTime" Precision="0" />
+    <Property Name="NgayDatHang" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MaVanDon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Int32" />
+    <Property Name="ID_TaiKhoan" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__DonHang__ID_TaiK__40058253" FromRole="DonHang" ToRole="TaiKhoan" />
+    <NavigationProperty Name="LichSuDonHang" Relationship="Self.FK__LichSuDon__ID_Do__47A6A41B" FromRole="DonHang" ToRole="LichSuDonHang" />
+  </EntityType>
+  <EntityType Name="HinhAnh">
+    <Key>
+      <PropertyRef Name="ID_HinhAnh" />
+    </Key>
+    <Property Name="ID_HinhAnh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnhUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SanPham" Type="Int32" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__HinhAnh__ID_SanP__2FCF1A8A" FromRole="HinhAnh" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="LichSuDonHang">
+    <Key>
+      <PropertyRef Name="ID_LichSu" />
+    </Key>
+    <Property Name="ID_LichSu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="ID_DonHang" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DonHang" Relationship="Self.FK__LichSuDon__ID_Do__47A6A41B" FromRole="LichSuDonHang" ToRole="DonHang" />
+  </EntityType>
+  <EntityType Name="MauSac">
+    <Key>
+      <PropertyRef Name="ID_MauSac" />
+    </Key>
+    <Property Name="ID_MauSac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenMauSac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietMauSac" Relationship="Self.FK__ChiTietMa__ID_Ma__2739D489" FromRole="MauSac" ToRole="ChiTietMauSac" />
+  </EntityType>
+  <EntityType Name="QuyenHan">
+    <Key>
+      <PropertyRef Name="ID_Quyen" />
+    </Key>
+    <Property Name="ID_Quyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenQuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__TaiKhoan__ID_Quy__367C1819" FromRole="QuyenHan" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="ID_SanPham" />
+    </Key>
+    <Property Name="ID_SanPham" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSanPham" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MatKinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DayDongHo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiSX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaBan" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GioiThieuNgan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MoTaSanPham" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BaoHanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SKU" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+    <Property Name="ID_ThuongHieu" Type="Int32" />
+    <NavigationProperty Name="ChiTietMauSac" Relationship="Self.FK__ChiTietMa__ID_Sa__2645B050" FromRole="SanPham" ToRole="ChiTietMauSac" />
+    <NavigationProperty Name="DanhGia" Relationship="Self.FK__DanhGia__ID_SanP__3B40CD36" FromRole="SanPham" ToRole="DanhGia" />
+    <NavigationProperty Name="HinhAnh" Relationship="Self.FK__HinhAnh__ID_SanP__2FCF1A8A" FromRole="SanPham" ToRole="HinhAnh" />
+    <NavigationProperty Name="ThuongHieu" Relationship="Self.FK__SanPham__ID_Thuo__2180FB33" FromRole="SanPham" ToRole="ThuongHieu" />
+    <NavigationProperty Name="DanhMuc" Relationship="Self.ChiTietDanhMuc" FromRole="SanPham" ToRole="DanhMuc" />
+    <Property Name="TrangThai" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID_TaiKhoan" />
+    </Key>
+    <Property Name="ID_TaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="SoDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="ID_Quyen" Type="Int32" />
+    <NavigationProperty Name="DanhGia" Relationship="Self.FK__DanhGia__ID_TaiK__3A4CA8FD" FromRole="TaiKhoan" ToRole="DanhGia" />
+    <NavigationProperty Name="DonHang" Relationship="Self.FK__DonHang__ID_TaiK__40058253" FromRole="TaiKhoan" ToRole="DonHang" />
+    <NavigationProperty Name="QuyenHan" Relationship="Self.FK__TaiKhoan__ID_Quy__367C1819" FromRole="TaiKhoan" ToRole="QuyenHan" />
+  </EntityType>
+  <EntityType Name="ThuongHieu">
+    <Key>
+      <PropertyRef Name="ID_ThuongHieu" />
+    </Key>
+    <Property Name="ID_ThuongHieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThuongHieu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__SanPham__ID_Thuo__2180FB33" FromRole="ThuongHieu" ToRole="SanPham" />
+  </EntityType>
+  <Association Name="FK__ChiTietMa__ID_Ma__2739D489">
+    <End Role="MauSac" Type="Self.MauSac" Multiplicity="1" />
+    <End Role="ChiTietMauSac" Type="Self.ChiTietMauSac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauSac">
+        <PropertyRef Name="ID_MauSac" />
+      </Principal>
+      <Dependent Role="ChiTietMauSac">
+        <PropertyRef Name="ID_MauSac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietMa__ID_Sa__2645B050">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietMauSac" Type="Self.ChiTietMauSac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="ChiTietMauSac">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGia__ID_SanP__3B40CD36">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGia__ID_TaiK__3A4CA8FD">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__ID_TaiK__40058253">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="ID_TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuDon__ID_Do__47A6A41B">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="LichSuDonHang" Type="Self.LichSuDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="ID_DonHang" />
+      </Principal>
+      <Dependent Role="LichSuDonHang">
+        <PropertyRef Name="ID_DonHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HinhAnh__ID_SanP__2FCF1A8A">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+    <End Role="HinhAnh" Type="Self.HinhAnh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID_SanPham" />
+      </Principal>
+      <Dependent Role="HinhAnh">
+        <PropertyRef Name="ID_SanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__ID_Quy__367C1819">
+    <End Role="QuyenHan" Type="Self.QuyenHan" Multiplicity="0..1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuyenHan">
+        <PropertyRef Name="ID_Quyen" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="ID_Quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPham__ID_Thuo__2180FB33">
+    <End Role="ThuongHieu" Type="Self.ThuongHieu" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuongHieu">
+        <PropertyRef Name="ID_ThuongHieu" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="ID_ThuongHieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChiTietDanhMuc">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="*" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="dbdonghoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietMauSac" EntityType="Self.ChiTietMauSac" />
+    <EntitySet Name="DanhGia" EntityType="Self.DanhGia" />
+    <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" />
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" />
+    <EntitySet Name="HinhAnh" EntityType="Self.HinhAnh" />
+    <EntitySet Name="LichSuDonHang" EntityType="Self.LichSuDonHang" />
+    <EntitySet Name="MauSac" EntityType="Self.MauSac" />
+    <EntitySet Name="QuyenHan" EntityType="Self.QuyenHan" />
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" />
+    <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
+    <AssociationSet Name="FK__ChiTietMa__ID_Ma__2739D489" Association="Self.FK__ChiTietMa__ID_Ma__2739D489">
+      <End Role="MauSac" EntitySet="MauSac" />
+      <End Role="ChiTietMauSac" EntitySet="ChiTietMauSac" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietMa__ID_Sa__2645B050" Association="Self.FK__ChiTietMa__ID_Sa__2645B050">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietMauSac" EntitySet="ChiTietMauSac" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGia__ID_SanP__3B40CD36" Association="Self.FK__DanhGia__ID_SanP__3B40CD36">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGia__ID_TaiK__3A4CA8FD" Association="Self.FK__DanhGia__ID_TaiK__3A4CA8FD">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__ID_TaiK__40058253" Association="Self.FK__DonHang__ID_TaiK__40058253">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuDon__ID_Do__47A6A41B" Association="Self.FK__LichSuDon__ID_Do__47A6A41B">
+      <End Role="DonHang" EntitySet="DonHang" />
+      <End Role="LichSuDonHang" EntitySet="LichSuDonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HinhAnh__ID_SanP__2FCF1A8A" Association="Self.FK__HinhAnh__ID_SanP__2FCF1A8A">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="HinhAnh" EntitySet="HinhAnh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__ID_Quy__367C1819" Association="Self.FK__TaiKhoan__ID_Quy__367C1819">
+      <End Role="QuyenHan" EntitySet="QuyenHan" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPham__ID_Thuo__2180FB33" Association="Self.FK__SanPham__ID_Thuo__2180FB33">
+      <End Role="ThuongHieu" EntitySet="ThuongHieu" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="ChiTietDanhMuc" Association="Self.ChiTietDanhMuc">
+      <End Role="DanhMuc" EntitySet="DanhMuc" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbdonghoModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbdonghoModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spSanpham" ReturnType="Collection(dbdonghoModel.spSanpham_Result)" />
+    <FunctionImport Name="spDanhMuc" ReturnType="Collection(dbdonghoModel.spDanhMuc_Result)" />
+    <FunctionImport Name="proc_ThemDanhMuc">
+      <Parameter Name="TenDanhMuc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ThemMauSac">
+      <Parameter Name="MauSac" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ThemThuongHieu">
+      <Parameter Name="TenThuongHieu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_SuaDanhMuc">
+      <Parameter Name="ID_DanhMuc" Mode="In" Type="Int32" />
+      <Parameter Name="TenDanhMuc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_SuaMauSac">
+      <Parameter Name="ID_MauSac" Mode="In" Type="Int32" />
+      <Parameter Name="TenMauSac" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_SuaThuongHieu">
+      <Parameter Name="ID_ThuongHieu" Mode="In" Type="Int32" />
+      <Parameter Name="TenThuongHieu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_XemDanhMuc" ReturnType="Collection(dbdonghoModel.proc_XemDanhMuc_Result)" />
+    <FunctionImport Name="proc_XemMauSac" ReturnType="Collection(dbdonghoModel.proc_XemMauSac_Result)" />
+    <FunctionImport Name="proc_XemThuongHieu" ReturnType="Collection(dbdonghoModel.proc_XemThuongHieu_Result)" />
+    <FunctionImport Name="proc_XoaDanhMuc">
+      <Parameter Name="ID_DanhMuc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_XoaMauSac">
+      <Parameter Name="ID_MauSac" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_XoaThuongHieu">
+      <Parameter Name="ID_ThuongHieu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_SuaSanPham">
+      <Parameter Name="ID_SanPham" Mode="In" Type="Int32" />
+      <Parameter Name="TenSanPham" Mode="In" Type="String" />
+      <Parameter Name="MatKinh" Mode="In" Type="String" />
+      <Parameter Name="DayDongHo" Mode="In" Type="String" />
+      <Parameter Name="NoiSX" Mode="In" Type="String" />
+      <Parameter Name="GiaBan" Mode="In" Type="Decimal" />
+      <Parameter Name="GioiThieuNgan" Mode="In" Type="String" />
+      <Parameter Name="MoTaSanPham" Mode="In" Type="String" />
+      <Parameter Name="BaoHanh" Mode="In" Type="String" />
+      <Parameter Name="SKU" Mode="In" Type="String" />
+      <Parameter Name="ID_ThuongHieu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ThemSanPham">
+      <Parameter Name="TenSanPham" Mode="In" Type="String" />
+      <Parameter Name="MatKinh" Mode="In" Type="String" />
+      <Parameter Name="DayDongHo" Mode="In" Type="String" />
+      <Parameter Name="NoiSX" Mode="In" Type="String" />
+      <Parameter Name="GiaBan" Mode="In" Type="Decimal" />
+      <Parameter Name="GioiThieuNgan" Mode="In" Type="String" />
+      <Parameter Name="MoTaSanPham" Mode="In" Type="String" />
+      <Parameter Name="BaoHanh" Mode="In" Type="String" />
+      <Parameter Name="SKU" Mode="In" Type="String" />
+      <Parameter Name="ID_ThuongHieu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_XemSanPham" ReturnType="Collection(dbdonghoModel.proc_XemSanPham_Result)" />
+    <FunctionImport Name="proc_XoaSanPham">
+      <Parameter Name="ID_SanPham" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSanpham_Result">
+    <Property Type="Int32" Name="ID_SanPham" Nullable="false" />
+    <Property Type="String" Name="TenSanPham" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="MatKinh" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DayDongHo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoiSX" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="GiaBan" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="GioiThieuNgan" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MoTaSanPham" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="BaoHanh" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NgayCapNhat" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ID_ThuongHieu" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spSanpham1_Result">
+    <Property Type="Int32" Name="ID_SanPham" Nullable="false" />
+    <Property Type="String" Name="TenSanPham" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="MatKinh" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DayDongHo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoiSX" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="GiaBan" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="GioiThieuNgan" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MoTaSanPham" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="BaoHanh" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NgayCapNhat" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ID_ThuongHieu" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spDanhMuc_Result">
+    <Property Type="Int32" Name="ID_DanhMuc" Nullable="false" />
+    <Property Type="String" Name="TenDanhMuc" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="proc_XemDanhMuc_Result">
+    <Property Type="Int32" Name="ID_DanhMuc" Nullable="false" />
+    <Property Type="String" Name="TenDanhMuc" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="proc_XemMauSac_Result">
+    <Property Type="Int32" Name="ID_MauSac" Nullable="false" />
+    <Property Type="String" Name="TenMauSac" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_XemThuongHieu_Result">
+    <Property Type="Int32" Name="ID_ThuongHieu" Nullable="false" />
+    <Property Type="String" Name="TenThuongHieu" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="proc_XemSanPham_Result">
+    <Property Type="Int32" Name="ID_SanPham" Nullable="false" />
+    <Property Type="String" Name="TenSanPham" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="MatKinh" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DayDongHo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoiSX" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="GiaBan" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="GioiThieuNgan" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MoTaSanPham" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="BaoHanh" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NgayCapNhat" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ID_ThuongHieu" Nullable="true" />
+    <Property Type="Int32" Name="TrangThai" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,116 @@
+﻿@model ClassLibrary.Product
+@{
+    ViewBag.Title = "Thêm sản phẩm mới";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    IEnumerable<ClassLibrary.Category> danhMuc = ViewBag.DanhMuc;
+}
+
+<section class="content">
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-7 mx-auto">
+                    <!-- general form elements -->
+                    <div class="card card-outline card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin sản phẩm</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="tensp">Tên sản phẩm <code>(*)</code></label>
+                                @Html.TextBoxFor(model => model.Name, new
+                           {
+                               @class = "form-control form-control-border",
+                               @placeholder = "Tên sản phẩm..."
+                           })
+                            </div>
+                            <div class="form-group">
+                                <label for="matkinh">Đơn vị tính <code>(*)</code></label>
+                                @Html.TextBoxFor(model => model.UnitCost, new
+                           {
+                               @class = "form-control form-control-border",
+                               @placeholder = "Đơn vị tính"
+                           })
+                            </div>
+                            <div class="form-group">
+                                <label for="matkinh">Hình ảnh <code>(*)</code></label>
+                                @Html.TextBoxFor(model => model.Image, new
+                           {
+                               @class = "form-control form-control-border",
+                               @placeholder = "Hình ảnh..."
+                           })
+                            </div>
+                            <div class="form-group">
+                                <label for="danhmuc">Danh mục</label>
+                                <select class="custom-select form-control-border border-width-2" name="CategoryID" id="danhmuc">
+                                    @foreach (var item in danhMuc)
+                                    {
+                                        <option value="@item.CategoryID">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Status">Trạng thái</label>
+                                <select class="custom-select form-control-border border-width-2" name="Status" id="Status">
+                                    <option value="ACTIVED">ACTIVED</option>
+                                    <option value="INACTIVED">INACTIVED</option>
+                                    <option value="BLOCKED">BLOCKED</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Giá bán:</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.Quantity, new
+                               {
+                                   @class = "form-control form-control-border",
+                                   @placeholder = "Giá bán"
+                               })
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter ..." name="Description"></textarea>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="text-right py-4 mr-2">
+                            <input type="submit" value="Lưu" class="btn btn-success" />
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (left) -->
+                <!-- right column -->
+                <!--/.col (right) -->
+            </div>
+        }
+        </div><!-- /.container-fluid -->
+</section>
+
+<!-- Select2 -->
+<script src="~/public/Admin/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="~/public/Admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- Summernote -->
+<script src="~/public/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- InputMask -->
+<script src="~/public/Admin/plugins/moment/moment.min.js"></script>
+<script src="~/public/Admin/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    });
+</script>
+<script>
+    $(function () {
+        // Summernote
+        $('#summernote').summernote()
+    });
+</script>
