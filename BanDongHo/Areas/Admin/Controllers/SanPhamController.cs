@@ -66,17 +66,24 @@ namespace BanDongHo.Areas.Admin.Controllers
             sanPhamDao.updateProduct(sanPham);
             return Redirect("/Admin/SanPham");
         }
+        [HttpGet]
         public ActionResult ThemSP()
         {
             ViewBag.DanhMuc = danhMucDao.getDanhMuc();
             return View();
         }
+
         [HttpPost]
         public ActionResult ThemSP(Product sanPham)
         {
-            sanPhamDao.addProduct(sanPham);
+            if (ModelState.IsValid)
+            {
+                sanPhamDao.addProduct(sanPham);
 
-            return Redirect("/Admin/SanPham");
+                return Redirect("/Admin/SanPham");
+            }
+            return View();
+            
         }
         [HttpGet]
         public ActionResult XoaSP(int idsp)

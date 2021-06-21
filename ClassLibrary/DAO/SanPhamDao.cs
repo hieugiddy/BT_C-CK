@@ -9,13 +9,13 @@ namespace ClassLibrary.DAO
     {
         private DangMinhHieuDbEntities db = new DangMinhHieuDbEntities();
         public IEnumerable<Product> getSanPham() {
-            return (IEnumerable<Product>) db.Product.ToList();
+            return (IEnumerable<Product>) db.Product.OrderByDescending(x=>x.ProductID).ToList();
         }
         public IEnumerable<Product> getSanPham(string q)
         {
             var sp= db.Product.Where(x => x.Name.Contains(q)
                                             || x.Description.Contains(q))
-                                       .ToList();
+                                       .OrderByDescending(x => x.ProductID).ToList();
             return (IEnumerable<Product>)sp;
         }
         public List<Product> getSanPhamTheoLoai()
@@ -30,31 +30,12 @@ namespace ClassLibrary.DAO
             var sp = db.Product.Where(x => x.ProductID == id).SingleOrDefault();
             return sp;
         }
-        public void addProduct(Product product)
+        public long addProduct(Product product)
         {
-            db.Product.Add(product);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            {
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting
-                        // the current instance as InnerException
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
-            }
 
+            db.Product.Add(product);
+            db.SaveChanges();
+            return product.ProductID;
         }
         public void updateProduct(Product product)
         {

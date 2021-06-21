@@ -23,13 +23,13 @@ namespace ClassLibrary.DAO
         }
         public IEnumerable<UserAccount> getUserAccounts()
         {
-            return (IEnumerable<UserAccount>)db.UserAccount.ToList();
+            return (IEnumerable<UserAccount>)db.UserAccount.OrderByDescending(x=>x.ID).ToList();
         }
         public IEnumerable<UserAccount> getUserAccounts(string q)
         {
             var tk = db.UserAccount.Where(x => x.UserName.Contains(q)
                                               || x.Status.Contains(q))
-                                       .ToList();
+                                       .OrderByDescending(x => x.ID).ToList();
             return (IEnumerable<UserAccount>)tk;
         }
         public void addUserAccount(UserAccount userAccount)
